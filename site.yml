@@ -1,0 +1,26 @@
+##
+# Ansible playbook for setting up a LAMP development server on Ubuntu 12.04.
+#
+
+---
+- hosts: all
+  user: lesmyrmidons
+  sudo: yes
+
+  vars_files:
+    - group_vars/all.yml
+
+  roles:
+    - common
+
+- hosts: server
+  user: lesmyrmidons
+  sudo: yes
+
+  vars_files:
+    - group_vars/all.yml
+
+  roles:
+    - mongodb
+    - web
+    - composer
