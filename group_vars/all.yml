@@ -1,0 +1,18 @@
+---
+# Variables listed here are applicable to all host groups
+
+url_apt_key: "http://keyserver.ubuntu.com/pks/lookup?op=get&search="
+
+ntpserver: '0.fr.pool.ntp.org'
+
+web:
+  httpd_port: 80
+  domain: dev.project.com
+  project_path: /data/dev.project.com
+  directory_index: app.php
+
+php5:
+  php_date_timezone: 'Europe/Paris'
+
+mariadb:
+  root_password: dev
