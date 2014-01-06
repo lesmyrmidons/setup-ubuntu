@@ -1,0 +1,11 @@
+---
+# This role deploys the mongodb processes and sets up settings.
+
+- name: Mongodb | Add keys authenticity
+  apt_key: url={{ url_apt_key }}0x7F0CEB10
+
+- name: Mongodb | Add source sources
+  apt_repository: repo='deb http://downloads-distro.mongodb.org/repo/debian-sysvinit dist 10gen' update_cache=yes
+
+- name: Mongodb | Install Packages
+  apt: pkg=mongodb-10gen
