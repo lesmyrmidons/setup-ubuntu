@@ -1,0 +1,43 @@
+---
+
+- name: Apache2 | Install required packages
+  apt: pkg=apache2
+  tags: apache2
+
+- name: Apache2 | Active module rewrite
+  command: a2enmod rewrite
+  tags: apache2
+  notify: Restart apache
+
+- name: Apache2 | Add vhost for project sf2
+  template: src=vhost-sf2.conf.j2 dest=/etc/apache2/sites-available/{{ web.domain }}.conf
+  tags: apache2
+
+- name: Apache2 | Activate vhost
+  command: a2ensite {{ web.domain }}.conf
+  tags: apache2
+  notify: Restart apache
+
+# This role deploys the MariaDB processes and sets up settings.
+
+- name: MariaDB | Add keys authenticity
+  apt_key: url={{ url_apt_key }}0xcbcb082a1bb943db state=present
+
+- name: MariaDB | Add source sources
+  apt_repository: repo='deb http://ftp.igh.cnrs.fr/pub/mariadb/repo/10.0/debian wheezy main' update_cache=yes
+
+- name: MariaDB | Install Packages
+  apt: pkg=$item state=installed
+  with_items:
+    - mariadb-server
+    - python-mysqldb
+
+- name: MariaDB | Set root password
+  mysql_user: name=root host=$item password={{ mariadb.root_password }}
+  with_items:
+    - 127.0.0.1
+    - ::1
+    - localhost
+
+- name: MariaDB | Copy .my.cnf file with root password credentials
+  template: src=my.cnf.j2 dest=/root/.my.cnf owner=root mode=0600
