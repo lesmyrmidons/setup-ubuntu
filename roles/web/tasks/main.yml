@@ -52,7 +52,10 @@
   notify: Restart mariadb
 
 - name: MariaDB | Write file my.cnf
-  template: src=templates/my.cnf.j2 dest=/root/.my.cnf
+  template: src=my.cnf.j2 dest=/root/.my.cnf owner=root mode=0600
+
+- name: MariaDB | Remove the MySQL test database
+  action: mysql_db db=test state=absent
 
 # This role deploys the PHP5 processes and sets up settings.
 
