@@ -9,8 +9,8 @@ echo "\033[0;32m Installation d'ansible.......\033[0m"
 pip install ansible
 
 echo "\033[0;32m Clone de la config d'installation.\033[0m"
-sudo -u `whoami` -H git clone git@git.karbouin.net:kevin.arbouin/desktop-home.git
+sudo -u `whoami` -H git clone git@git.karbouin.net:kevin.arbouin/desktop-home.git $HOME/.config-desktop-home
 
-cd desktop-home/
+cd $HOME/.config-desktop-home
 
-ansible-playbook site.yml -i hosts
+ansible-playbook -i hosts site.yml
