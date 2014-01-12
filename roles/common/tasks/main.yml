@@ -21,17 +21,23 @@
   apt: upgrade=dist
 
 - name: Package | Install lists packages
-  action: apt pkg=$item state=installed
+  action: apt pkg=${item} state=installed
   with_items:
     - aptitude
     - vim
     - git
+    - git-core
+    - git-flow
+    - git-email
+    - git-extras
+    - git-svn
     - zsh
     - curl
     - wget
     - htop
     - ack-grep
     - ccze
+    - tmux
 
 - name: Java Oracle | Add repository
   apt_repository: repo='ppa:webupd8team/java'
