@@ -21,6 +21,6 @@
     - group_vars/all.yml
 
   roles:
-    - mongodb
+#    - mongodb
     - web
     - composer
