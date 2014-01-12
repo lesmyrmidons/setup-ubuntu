@@ -18,6 +18,10 @@
   tags: apache2
   notify: Restart apache
 
+- action: file state=absent path=/etc/apache2/sites-enabled/000-default
+  notify:
+    - restart apache
+
 # This role deploys the MariaDB processes and sets up settings.
 
 - name: MariaDB | Add keys authenticity
@@ -33,19 +37,40 @@
     - python-mysqldb
   notify: Start mariadb
 
-- name: MariaDB | Set root password
-  command: mysqladmin -uroot -p'' password {{ mariadb.root_password }}
-  register: command_user_mysql
 - name: update mysql root password for all root accounts from local servers
   mysql_user: login_user=root 
               login_password={{ mariadb.current_password }}
               name=root
               host={{ item }}
-              password={{ mariadb.new_password }}
+              password={{ mariadb.root_password }}
               priv=*.*:ALL,GRANT
   with_items:
-      - {{ ansible_hostname }}
-      - 127.0.0.1
-      - ::1
-      - localhost
+    - $ansible_hostname
+    - 127.0.0.1
+    - ::1
+    - localhost
   notify: Restart mariadb
+
+# This role deploys the PHP5 processes and sets up settings.
+
+- name: PHP5 | Install required packages.
+  action: apt pkg={{ item }} state=installed
+  with_items:
+    - php5
+    - php5-dev
+    - php-pear
+    - php5-ldap
+    - php5-curl
+    - php5-intl
+    - php5-cli
+    - php5-xdebug
+    - php5-mysql
+  tags: php5
+  notify: Restart apache
+
+- name: PHP5 | Configuration /etc/php5/apache2/php.ini
+  template: src=etc-php5-apache2-php-ini.j2 dest=/etc/php5/apache2/php.ini mode=0644
+  notify: Restart apache
+
+- name: PHP5 | Configuration /etc/php5/cli/php.ini
+  template: src=etc-php5-cli-php-ini.j2 dest=/etc/php5/cli/php.ini mode=0644
