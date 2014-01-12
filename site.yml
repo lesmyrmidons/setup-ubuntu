@@ -3,8 +3,7 @@
 #
 
 ---
-- hosts: localhost
-  connection: local
+- hosts: local
   user: lesmyrmidons
   sudo: yes
 
