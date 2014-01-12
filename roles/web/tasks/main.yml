@@ -1,11 +1,11 @@
 ---
 
 - name: Apache2 | Install required packages
-  apt: pkg=apache2
+  apt: pkg=apache2 state=installed
   tags: apache2
 
 - name: Apache2 | Active module rewrite
-  command: a2enmod rewrite
+  command: a2enmod rewrite 
   tags: apache2
   notify: Restart apache
 
@@ -27,18 +27,13 @@
   apt_repository: repo='deb http://ftp.igh.cnrs.fr/pub/mariadb/repo/10.0/debian wheezy main' update_cache=yes
 
 - name: MariaDB | Install Packages
-  apt: pkg=$item state=installed
+  apt: pkg={{ item }} state=installed
   with_items:
     - mariadb-server
     - python-mysqldb
-
-- name: MariaDB | Copy .my.cnf file with root password credentials
-  template: src=my.cnf.j2 dest=/root/.my.cnf owner=root mode=0600
+  notify: Start mariadb
 
 - name: MariaDB | Set root password
-  mysql_user: name=root host=$item password={{ mariadb.root_password }}
-  with_items:
-    - $ansible_hostname
-    - 127.0.0.1
-    - ::1
-    - localhost
+  command: mysqladmin -uroot -p'' password '{{ mariadb.root_password }}'
+  register: command_user_mysql
+  notify: Restart mariadb
