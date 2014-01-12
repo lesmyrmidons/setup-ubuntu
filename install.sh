@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 CURRENT=`pwd`
 
 if [ ! -d ~/.config-desktop-home] then
