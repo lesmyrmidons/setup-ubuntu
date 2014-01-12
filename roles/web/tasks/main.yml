@@ -34,6 +34,18 @@
   notify: Start mariadb
 
 - name: MariaDB | Set root password
-  command: mysqladmin -uroot -p'' password '{{ mariadb.root_password }}'
+  command: mysqladmin -uroot -p'' password {{ mariadb.root_password }}
   register: command_user_mysql
+- name: update mysql root password for all root accounts from local servers
+  mysql_user: login_user=root 
+              login_password={{ mariadb.current_password }}
+              name=root
+              host={{ item }}
+              password={{ mariadb.new_password }}
+              priv=*.*:ALL,GRANT
+  with_items:
+      - {{ ansible_hostname }}
+      - 127.0.0.1
+      - ::1
+      - localhost
   notify: Restart mariadb

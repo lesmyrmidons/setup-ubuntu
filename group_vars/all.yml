@@ -15,4 +15,5 @@ php5:
   php_date_timezone: 'Europe/Paris'
 
 mariadb:
+  current_password: ''
   root_password: dev
