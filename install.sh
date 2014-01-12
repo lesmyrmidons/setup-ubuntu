@@ -2,7 +2,7 @@ CURRENT=`pwd`
 
 if [ ! -d ~/.config-desktop-home] then
     echo "\033[0;32m Installation de python.......\033[0m"
-    sudo apt-get install -y -qq python git git-core
+    sudo apt-get install -y -qq python python-pip git git-core openssh-server
 
     echo "\033[0;32m Installation d'ansible.......\033[0m"
     sudo pip install ansible
