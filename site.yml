@@ -12,6 +12,7 @@
 
   roles:
     - common
+    - adst
 #    - mongodb
     - web
     - composer

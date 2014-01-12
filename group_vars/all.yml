@@ -7,8 +7,8 @@ ntpserver: '0.fr.pool.ntp.org'
 
 web:
   httpd_port: 80
-  domain: dev.project.com
-  project_path: /data/dev.project.com
+  domain: adst.local
+  project_path: /home/lesmyrmidons/Project/dev/github/adst
   directory_index: app.php
 
 php5:
