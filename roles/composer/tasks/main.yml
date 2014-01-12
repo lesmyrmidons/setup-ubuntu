@@ -6,12 +6,12 @@
 
 - name: Composer | Install composer.phar
   command: php -r "eval('?>'.file_get_contents('https://getcomposer.org/installer'));"
-  when_string: ${is_file_created.stdout} != "exist"
+  when: ${is_file_created.stdout} != "exist"
 
 - name: Composer | Rename composer.phar to composer
   command: mv composer.phar /usr/local/bin/composer
-  when_string: ${is_file_created.stdout} != "exist"
+  when: ${is_file_created.stdout} != "exist"
 
 - name: Composer | Update composer
   command: /usr/local/bin/composer self-update
-  when_string: ${is_file_created.stdout} == "exist"
+  when: ${is_file_created.stdout} == "exist"
