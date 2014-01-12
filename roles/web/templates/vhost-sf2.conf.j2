@@ -5,7 +5,7 @@
     DirectoryIndex {{ web.directory_index }}
 
     <Directory "{{ web.project_path }}/web">
-        Options -Indexes FollowSymLinks SymLinksifOwnerMatch
+        Options -Indexes FollowSymLinks
         AllowOverride All
         Allow from All
     </Directory>
