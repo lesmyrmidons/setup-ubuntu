@@ -71,6 +71,7 @@
     - php5-cli
     - php5-xdebug
     - php5-mysql
+    - php5-json
   tags: php5
   notify: Restart apache
 
@@ -81,11 +82,11 @@
 - name: PHP5 | Configuration /etc/php5/cli/php.ini
   template: src=etc-php5-cli-php-ini.j2 dest=/etc/php5/cli/php.ini mode=0644
 
-- name: PHP5 | PHPDev | Update pear packages
-  command: pear upgrade
+- name: PHP5 | PHPDev | Update pear channels
+  command: pear update-channels
 
 - name: PHP5 | PHPDev | Update pear packages
-  command: pear upgrade
+  command: pear upgrade-all
 
 - name: PHP | PHPDev | Set pear auto-discover
   command: pear config-set auto_discover 1
