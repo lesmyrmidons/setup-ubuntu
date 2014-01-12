@@ -1,17 +1,14 @@
 ---
 
 - name: Composer | Test if existing file
-  shell: test -f /usr/local/bin/composer && echo "exist" || echo ""
+  command: test -f /usr/local/bin/composer
   register: is_file_created
+  ignore_errors: true
 
 - name: Composer | Install composer.phar
-  command: php -r "eval('?>'.file_get_contents('https://getcomposer.org/installer'));"
-  when: {{ is_file_created.stdout }} != "exist"
-
-- name: Composer | Rename composer.phar to composer
-  command: mv composer.phar /usr/local/bin/composer
-  when: {{ is_file_created.stdout }} != "exist"
+  shell: curl -sS https://getcomposer.org/installer | /usr/bin/php && /bin/mv /home/vagrant/composer.phar /usr/local/bin/composer creates=/usr/local/bin/composer
+  when: is_file_created != 1
 
 - name: Composer | Update composer
   command: /usr/local/bin/composer self-update
-  when: {{ is_file_created.stdout }} == "exist"
+  when: is_file_created == 1
