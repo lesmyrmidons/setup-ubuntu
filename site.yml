@@ -3,7 +3,8 @@
 #
 
 ---
-- hosts: all
+- hosts: localhost
+  connection: local
   user: lesmyrmidons
   sudo: yes
 
@@ -12,15 +13,6 @@
 
   roles:
     - common
-
-- hosts: server
-  user: lesmyrmidons
-  sudo: yes
-
-  vars_files:
-    - group_vars/all.yml
-
-  roles:
 #    - mongodb
     - web
     - composer
