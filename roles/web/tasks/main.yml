@@ -9,7 +9,7 @@
   tags: apache2
   notify: Restart apache
 
-- name: Apache2 | Add vhost for project sf2
+- name: Apache2 | Add vhost for project adst
   template: src=vhost-sf2.conf.j2 dest=/etc/apache2/sites-available/{{ web.domain }}.conf
   tags: apache2
 
@@ -37,7 +37,7 @@
     - python-mysqldb
   notify: Start mariadb
 
-- name: update mysql root password for all root accounts from local servers
+- name: MariaDB | Update mysql root password for all root accounts from local servers
   mysql_user: login_user=root 
               login_password={{ mariadb.current_password }}
               name=root
@@ -50,6 +50,9 @@
     - ::1
     - localhost
   notify: Restart mariadb
+
+- name: MariaDB | Write file my.cnf
+  template: src=templates/my.cnf.j2 dest=/root/.my.cnf
 
 # This role deploys the PHP5 processes and sets up settings.
 
@@ -74,3 +77,17 @@
 
 - name: PHP5 | Configuration /etc/php5/cli/php.ini
   template: src=etc-php5-cli-php-ini.j2 dest=/etc/php5/cli/php.ini mode=0644
+
+- name: PHP5 | PHPDev | Update pear packages
+  command: pear upgrade
+
+- name: PHP5 | PHPDev | Update pear packages
+  command: pear upgrade
+
+- name: PHP | PHPDev | Set pear auto-discover
+  command: pear config-set auto_discover 1
+
+- name: PHP | PHPDev | Pear install the PHP QA Toolchain
+  command: pear install pear.phpqatools.org/phpqatools creates=/usr/bin/phpunit
+  # this fails often (dns problems, pear problems, etc. So just ignore the errors and continue.)
+  ignore_errors: true
