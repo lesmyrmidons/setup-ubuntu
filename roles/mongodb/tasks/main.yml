@@ -9,3 +9,7 @@
 
 - name: Mongodb | Install Packages
   apt: pkg=mongodb-10gen
+
+- name: Mongodb | Install PHP 5 Mongo Module
+  command: pecl install mongo creates=/usr/lib/php5/mongo/mongo.so
+  ignore_errors: yes
