@@ -16,3 +16,6 @@
 
 - name: ADST | Application of the rights on folders 2
   shell: setfacl -dR -m u:{{ apache_user.stdout }}:rwX -m u:`whoami`:rwX {{ web.project_path }}/app/cache {{ web.project_path }}/app/logs
+
+- name: ADST | Add hosts
+  lineinfile: dest=/etc/hosts regexp='^127\.0\.0\.1' line='127.0.0.1 localhost {{ web.domain }}' owner=root group=root mode=0644 state=present
