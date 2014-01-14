@@ -8,7 +8,7 @@
 - name: NTP | Configure ntp file
   template: src=ntp.conf.j2 dest=/etc/ntp.conf
   tags: ntp
-  notify: restart ntp
+  notify: Restart ntp
 
 - name: NTP | Start the ntp service
   service: name=ntp state=started enabled=true
@@ -38,6 +38,8 @@
     - ack-grep
     - ccze
     - tmux
+    - terminator
+    - tig
 
 - name: Java Oracle | Add repository
   apt_repository: repo='ppa:webupd8team/java'
