@@ -12,4 +12,10 @@
 
 - name: Mongodb | Install PHP 5 Mongo Module
   command: pecl install mongo creates=/usr/lib/php5/mongo/mongo.so
-  ignore_errors: yes
+  ignore_errors: true
+
+- name: Mongodb | Configure PHP to use PECL MongoDB extension
+  template: src=etc-php5-conf-d-mongo-ini.j2 dest=/etc/php5/mods-available/mongo.ini
+
+- name: Mongodb | Enable extension mongo.ini
+  command: php5enmod ALL mongo state=present
