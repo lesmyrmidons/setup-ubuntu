@@ -6,9 +6,9 @@
   ignore_errors: true
 
 - name: Composer | Install composer.phar
-  shell: curl -sS https://getcomposer.org/installer | /usr/bin/php && /bin/mv /home/vagrant/composer.phar /usr/local/bin/composer creates=/usr/local/bin/composer
-  when: is_file_created != 1
+  shell: curl -sS https://getcomposer.org/installer | /usr/bin/php && /bin/mv composer.phar /usr/local/bin/composer creates=/usr/local/bin/composer
+  when: ! is_file_created
 
 - name: Composer | Update composer
-  command: /usr/local/bin/composer self-update
-  when: is_file_created == 1
+  shell: composer self-update
+  when: is_file_created
