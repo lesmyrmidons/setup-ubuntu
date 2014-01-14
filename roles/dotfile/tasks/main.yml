@@ -1,0 +1,7 @@
+---
+
+- name: Clone dotfile repo
+  git: repo=git@github.com:lesmyrmidons/dotfiles.git dest=/home/$user/.dotfiles
+
+- name: Clone oh-my-zsh repo
+  git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=/home/$user/.oh-my-zsh
