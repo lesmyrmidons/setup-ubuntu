@@ -18,9 +18,10 @@
   tags: apache2
   notify: Restart apache
 
-- action: file state=absent path=/etc/apache2/sites-enabled/000-default
+- name: Apache2 | Remove default configuration
+  file: state=absent path=/etc/apache2/sites-enabled/000-default
   notify:
-    - restart apache
+    - Restart apache
 
 # This role deploys the MariaDB processes and sets up settings.
 
@@ -37,6 +38,10 @@
     - python-mysqldb
   notify: Start mariadb
 
+- name: MariaDB | Test 
+  shell: ls /root/.my.cnf | wc -l
+  register: database_config
+
 - name: MariaDB | Update mysql root password for all root accounts from local servers
   mysql_user: login_user=root 
               login_password={{ mariadb.current_password }}
@@ -49,6 +54,7 @@
     - 127.0.0.1
     - ::1
     - localhost
+  when: database_config == 0
   notify: Restart mariadb
 
 - name: MariaDB | Write file my.cnf
@@ -95,3 +101,12 @@
   command: pear install pear.phpqatools.org/phpqatools creates=/usr/bin/phpunit
   # this fails often (dns problems, pear problems, etc. So just ignore the errors and continue.)
   ignore_errors: true
+
+# This role deploys the phpmyadmin processes and sets up settings.
+
+- name: Phpmyadmin | Install Phpmyadmin
+  apt: pkg=phpmyadmin state=present
+  notify: Restart apache
+
+- name: Phpmyadmin | Add symlink for phpmyadmin
+  file: src=/usr/share/phpmyadmin dest=/var/www/phpmyadmin state=link

@@ -5,9 +5,11 @@ url_apt_key: "http://keyserver.ubuntu.com/pks/lookup?op=get&search="
 
 ntpserver: '0.fr.pool.ntp.org'
 
+user: lesmyrmidons
+
 web:
   httpd_port: 80
-  domain: adst.local
+  domain: adst.karbouin.net
   project_path: /home/lesmyrmidons/Project/dev/github/adst
   directory_index: app.php
 

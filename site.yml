@@ -12,7 +12,8 @@
 
   roles:
     - common
+    - nvidia
     - adst
-#    - mongodb
     - web
+    - mongodb
     - composer
