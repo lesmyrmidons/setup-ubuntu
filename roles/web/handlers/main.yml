@@ -2,10 +2,10 @@
 # List handlers for Apache2
 
 - name: Restart apache
-  action: service name=apache2 state=restarted
+  service: name=apache2 state=restarted
 
 - name: Graceful apache
-  action: service name=apache2 state=graceful
+  service: name=apache2 state=graceful
 
 - name: Start mariadb
   service: name=mysql state=started
