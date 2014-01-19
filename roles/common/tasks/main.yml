@@ -24,6 +24,7 @@
   apt: pkg={{ item }} state=installed
   with_items:
     - aptitude
+    - bash-completion
     - vim
     - git
     - git-core
