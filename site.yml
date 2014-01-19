@@ -18,3 +18,4 @@
     - mongodb
     - composer
     - nodejs
+    - dotfile

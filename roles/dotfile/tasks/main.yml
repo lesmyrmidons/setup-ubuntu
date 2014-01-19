@@ -1,7 +1,35 @@
 ---
 
-- name: Clone dotfile repo
-  git: repo=git@github.com:lesmyrmidons/dotfiles.git dest=/home/$user/.dotfiles
+# 
+- name: "Launcher | Add repository Synapse"
+  apt_repository: repo='ppa:noobslab/apps' state=present update_cache=yes
 
-- name: Clone oh-my-zsh repo
-  git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=/home/$user/.oh-my-zsh
+- name: "Launcher | Install Synapse"
+  apt: pkg={{ item }} state=installed
+  with_items:
+    - synapse
+    - indicator-synapse
+  notify:
+    - Start synapse
+
+# Config theme Gnome Shell
+- name: "Gnome 3 | Change default template by template dark"
+  copy: src=/usr/share/themes/Adwaita/gtk-3.0/gtk-dark.css dest=/usr/share/themes/Adwaita/gtk-3.0/gtk.css backup=yes
+
+# Config Conky
+- name: "Conky | Install packages"
+  apt: pkg={{ item }} state=installed
+  with_items:
+    - conky-all
+    - ttf-ubuntu-font-family
+
+- name: "Conky | download file configuration"
+  sudo: false
+  get_url: url=http://www.tux-planet.fr/public/conf/conky/conky-gotham dest=/home/{{ user }}/.conkyrc mode=0644 owner={{ user }}
+  notify:
+    - Start conky
+
+# 
+- name: Clone dotfile repo
+  sudo: false
+  git: repo=git@github.com:lesmyrmidons/dotfiles.git dest=/home/{{ user }}/.dotfiles
