@@ -23,11 +23,19 @@
     - conky-all
     - ttf-ubuntu-font-family
 
-- name: "Conky | download file configuration"
+- name: "Conky | Download file configuration"
   sudo: false
   get_url: url=http://www.tux-planet.fr/public/conf/conky/conky-gotham dest=/home/{{ user }}/.conkyrc mode=0644 owner={{ user }}
   notify:
     - Start conky
+
+# Install PhpStorm
+- name: "PhpStorm | Download application in zip"
+  sudo: false
+  get_url: url=http://www.jetbrains.com/phpstorm/download/download_thanks.jsp?os=linux dest=/home/{{ user }}/phpstorm.tar.gz
+
+- name: "PhpStorm | Unarchive application and move into folder /opt"
+  unarchive: src=/home/{{ user }}/phpstorm.tar.gz dest=/opt/phpstorm
 
 # 
 - name: Clone dotfile repo
