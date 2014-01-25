@@ -25,6 +25,7 @@
   with_items:
     - aptitude
     - bash-completion
+    - openssh-server
     - vim
     - git
     - git-core
@@ -41,6 +42,10 @@
     - tmux
     - terminator
     - tig
+    - unzip
+    - tar
+    - gzip
+    - bzip2
 
 - name: Java Oracle | Add repository
   apt_repository: repo='ppa:webupd8team/java'
