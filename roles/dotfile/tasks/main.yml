@@ -36,8 +36,9 @@
 
 - name: "PhpStorm | Unarchive application and move into folder /opt"
   unarchive: src=/home/{{ user }}/phpstorm.tar.gz dest=/opt/phpstorm
+  ignore_errors: true
 
 # 
 - name: Clone dotfile repo
   sudo: false
-  git: repo=git@github.com:lesmyrmidons/dotfiles.git dest=/home/{{ user }}/.dotfiles
+  git: repo=git@github.com:lesmyrmidons/dotfiles.git dest=/home/{{ user }}/.dotfiles update=yes
