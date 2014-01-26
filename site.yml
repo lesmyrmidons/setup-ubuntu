@@ -12,6 +12,7 @@
 
   roles:
     - common
+    - vim
     - nvidia
     - adst
     - web
