@@ -13,6 +13,7 @@
   roles:
     - common
     - vim
+    - pinta
     - nvidia
     - adst
     - web
