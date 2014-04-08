@@ -3,9 +3,9 @@
 - name: LATEX | Install package
   apt: pkg={{ item }} state=present
   with_items:
-  	- texmaker=v4.1.1
-  	- texlive
-  	- texlive-latex3
-  	- texlive-latex-extra
-  	- texlive-lang-french
-  	- texlive-full
+    - texmaker
+    - texlive
+    - texlive-latex3
+    - texlive-latex-extra
+    - texlive-lang-french
+    - texlive-full

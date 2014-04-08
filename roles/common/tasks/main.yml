@@ -1,6 +1,10 @@
 ---
 # This playbook contains common plays that will be run on all nodes.
 
+# for 1.6 this ansible
+#- name: Create en_US.UTF-8 locale
+#  locale_gen: name=en_US.UTF-8 state=present
+
 - name: NTP | Install
   apt: name=ntp state=present
   tags: ntp
@@ -46,6 +50,8 @@
     - tar
     - gzip
     - bzip2
+    - nfs-kernel-server
+    - nfs-common 
 
 - name: Java Oracle | Add repository
   apt_repository: repo='ppa:webupd8team/java'
