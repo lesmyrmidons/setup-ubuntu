@@ -6,6 +6,7 @@
   git: repo=git@github.com:lesmyrmidons/vim-config.git
        dest=/home/{{ user }}/.vim-config
        update=yes
+       accept_hostkey=yes
 
 - name: VIM | Created symlink (vimrc)
   sudo: false

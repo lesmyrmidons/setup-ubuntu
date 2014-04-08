@@ -5,6 +5,7 @@
   git: repo=git@github.com:lesmyrmidons/AdstSF2.git
        dest={{ web.project_path }}
        update=yes
+       accept_hostkey=yes
 
 - name: ADST | Set var for user apache
   sudo: false
