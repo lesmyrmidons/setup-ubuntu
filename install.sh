@@ -15,4 +15,4 @@ fi
 
 cd $HOME/.config-desktop-home
 
-ansible-playbook -i hosts site.yml
+ansible-playbook -i hosts site.yml -c local -K

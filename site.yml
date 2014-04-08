@@ -11,14 +11,14 @@
     - group_vars/all.yml
 
   roles:
-    - common
-    - vim
-    - pinta
-    - latex
-    - nvidia
-    - adst
+    - common    # List of essential packages
+    - vim       # Configuration for vim
+    - pinta     # Gimp little
+    - latex     # Latex and ide texmaker
+    - nvidia    # Drivers owner
+    - adst      # Application for series https://github.com/lesmyrmidons/AdstSF2
     - web
     - mongodb
     - composer
     - nodejs
-    - dotfile
+    - dotfile   # My dotfile (config : git, zsh, bash, tig, ...)

@@ -12,3 +12,5 @@ Run
 ```shell
 $ curl -L http://git.karbouin.net/kevin.arbouin/desktop-home/blob/master/install.sh | sh
 ```
+
+And enter your password.
