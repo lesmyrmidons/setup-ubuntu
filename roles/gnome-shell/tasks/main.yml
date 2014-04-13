@@ -1,0 +1,4 @@
+---
+
+- name: Gnome Shell | Install drivers for OPENVPN
+  apt: pkg=network-manager-openvpn-gnome state=installed
