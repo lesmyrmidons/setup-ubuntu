@@ -17,6 +17,7 @@
     - latex     # Latex and ide texmaker
     - nvidia    # Drivers owner
     - adst      # Application for series https://github.com/lesmyrmidons/AdstSF2
+    - hhvm
     - web
     - mongodb
     - composer
