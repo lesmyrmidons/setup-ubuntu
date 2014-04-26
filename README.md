@@ -38,14 +38,15 @@ This project install all following packages:
 * nfs-kernel-server, nfs-common
 * pwgen
 * Java 1.7.x (Oracle)
-* Virtualbox
+* Virtualbox (Oracle)
 * LAMP (MariaDB), pear, phpmyadmin, Composer
 * MongoDB
 * Drivers NVIDIA
-* nodjs
-* Latex
+* nodejs
+* Latex, texmaker
 * Pinta (equivalent Paint.NET for Windows)
 * ADST (https://github.com/lesmyrmidons/AdstSF2)
+* HHVM
 
 Custom installation
 -------------------
