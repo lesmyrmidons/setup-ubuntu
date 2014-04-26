@@ -1,5 +1,5 @@
 ##
-# Ansible playbook for setting up a LAMP development server on Ubuntu 12.04.
+# Ansible playbook for setting up a LAMP development server on Ubuntu 14.04.
 #
 
 ---
