@@ -1,5 +1,5 @@
-Automation installation of Ubuntu desktop
-=========================================
+Automated Desktop Setup
+=======================
 
 Requirements
 -----------
@@ -24,33 +24,33 @@ Default installation
 
 This project will install the following packages:
 
-* aptitude
-* bash-completion
-* openssh-server
-* vim
-* git, git-core, git-flow, git-email, git-extras, git-svn
-* zsh
-* curl
-* wget
-* htop
-* ack-grep
-* ccze
-* tmux
-* terminator
-* tig
-* unzip, tar, gzip, bzip2
-* nfs-kernel-server, nfs-common
-* pwgen
-* Java 1.7.x (Oracle)
-* Virtualbox (Oracle)
-* LAMP (MariaDB), pear, phpmyadmin, Composer
-* MongoDB
-* Drivers NVIDIA
-* nodejs
-* Latex, texmaker
-* Pinta (equivalent Paint.NET for Windows)
-* ADST (https://github.com/lesmyrmidons/AdstSF2)
-* HHVM
+    * aptitude
+    * bash-completion
+    * openssh-server
+    * vim
+    * git, git-core, git-flow, git-email, git-extras, git-svn
+    * zsh
+    * curl
+    * wget
+    * htop
+    * ack-grep
+    * ccze
+    * tmux
+    * terminator
+    * tig
+    * unzip, tar, gzip, bzip2
+    * nfs-kernel-server, nfs-common
+    * pwgen
+    * Java 1.7.x (Oracle)
+    * Virtualbox (Oracle)
+    * LAMP (MariaDB), pear, phpmyadmin, Composer
+    * MongoDB
+    * Drivers NVIDIA
+    * nodejs
+    * Latex, texmaker
+    * Pinta (equivalent Paint.NET for Windows)
+    * ADST (https://github.com/lesmyrmidons/AdstSF2)
+    * HHVM
 
 Custom installation
 -------------------
