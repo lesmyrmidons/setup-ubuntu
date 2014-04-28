@@ -1,13 +1,17 @@
-Automation installation of Desktop
-==================================
+Automation installation of Ubuntu desktop
+=========================================
 
 Requirements
 -----------
 
-* Package curl, git and git-core
+    * curl,
+    * git,
+    * git-core.
 
 Run
 ---
+
+If you want to change anything :
 
 ```shell
 $ curl -L http://git.karbouin.net/kevin.arbouin/desktop-home/blob/master/install.sh | sh
@@ -18,7 +22,7 @@ And enter your password.
 Default installation
 --------------------
 
-This project install all following packages:
+This project will install the following packages:
 
 * aptitude
 * bash-completion
