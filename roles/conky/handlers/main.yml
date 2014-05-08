@@ -1,0 +1,6 @@
+---
+
+# List handlers for Conky
+- name: Start conky
+  sudo: false
+  shell: conky&
