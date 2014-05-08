@@ -100,3 +100,8 @@ And execute command :
     $ ansible-playbook -i hosts site.yml -c local -K
 
 You can also contribute to add new roles or improve existing.
+
+License
+-------
+
+MIT / BSD
