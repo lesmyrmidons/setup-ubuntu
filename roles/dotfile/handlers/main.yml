@@ -9,8 +9,3 @@
 
 - name: Restart synapse
   service: name=synapse state=restarted
-
-# List handlers for Conky
-- name: Start conky
-  sudo: false
-  shell: conky&

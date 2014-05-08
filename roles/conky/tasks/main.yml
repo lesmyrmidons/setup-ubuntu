@@ -1,15 +1,21 @@
 ---
 
 # Config Conky
-- name: "Conky | Install packages"
+- name: Conky | Install packages
   apt: pkg={{ item }} state=installed
   with_items:
     - conky
     - conky-all
     - ttf-ubuntu-font-family
 
-- name: "Conky | Download file configuration"
+- name: Conky | Test the presence of the file
+  command: test -f /home/{{ user }}/.conkyrc
+  register: is_file_created
+  ignore_errors: true
+
+- name: Conky | Download file configuration
   sudo: false
   get_url: url=http://www.tux-planet.fr/public/conf/conky/conky-gotham dest=/home/{{ user }}/.conkyrc mode=0644 owner={{ user }} force=yes
+  when: ! is_file_created
   notify:
     - Start conky
