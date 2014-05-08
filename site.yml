@@ -11,16 +11,18 @@
     - group_vars/all.yml
 
   roles:
-    - common    # List of essential packages
-    - vim       # Configuration for vim
-    - pinta     # Gimp little
-    - latex     # Latex and ide texmaker
-    - nvidia    # Drivers owner
-    - adst      # Application for series https://github.com/lesmyrmidons/AdstSF2
-    - hhvm
+    - common       # List of essential packages
+    - vim          # Configuration for vim
+    - pinta        # Gimp little
+    - latex        # Latex and ide texmaker
+    - nvidia       # Drivers owner
+    - adst         # Application for series https://github.com/lesmyrmidons/AdstSF2
+#    - hhvm         # Fork PHP
     - web
     - mongodb
     - composer
     - nodejs
-    - dotfile   # My dotfile (config : git, zsh, bash, tig, ...)
-    - gnome-shell
+    - dotfile      # My dotfile (config : git, zsh, bash, tig, ...)
+    - conky
+    - gnome-shell  # Extension and custom template
+#    - gnome-boxes  # Virtual machine
