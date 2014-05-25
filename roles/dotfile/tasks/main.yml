@@ -1,19 +1,5 @@
 ---
 
-# 
-- name: "Launcher | Add repository Synapse"
-  apt_repository: repo='ppa:noobslab/apps' state=present update_cache=yes
-  when: ansible_distribution == "Ubuntu" and {{ ansible_distribution_version | version_compare('14.04', '<') }}
-
-- name: "Launcher | Install Synapse"
-  apt: pkg={{ item }} state=installed
-  when: ansible_distribution == "Ubuntu" and {{ ansible_distribution_version | version_compare('14.04', '<') }}
-  with_items:
-    - synapse
-    - indicator-synapse
-  notify:
-    - Start synapse
-
 # Install PhpStorm
 - name: "PhpStorm | Download application in zip"
   sudo: false

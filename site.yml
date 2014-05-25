@@ -25,4 +25,5 @@
     - dotfile      # My dotfile (config : git, zsh, bash, tig, ...)
     - conky
     - gnome-shell  # Extension and custom template
+    - synapse      # Launcher apps.
 #    - gnome-boxes  # Virtual machine
