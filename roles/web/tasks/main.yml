@@ -63,7 +63,7 @@
   template: src=my.cnf.j2 dest=/root/.my.cnf owner=root mode=0600
 
 - name: MariaDB | Write file my.cnf
-  template: src=my.cnf.j2 dest=~/.my.cnf owner={{ user }} mode=0600
+  template: src=my.cnf.j2 dest=/home/{{ user }}/.my.cnf owner={{ user }} mode=0600
 
 - name: MariaDB | Remove the MySQL test database
   mysql_db: db=test state=absent

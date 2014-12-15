@@ -24,9 +24,8 @@
   when: ansible_distribution == "Ubuntu" and {{ ansible_distribution_version | version_compare('14.04', '>=') }}
   with_items:
     - synapse
-    - indicator-synapse
   notify:
     - Start synapse
 
 - name: "Launcher | Set configuration"
-  COPY: src=config.json dest={{ ansible_env.HOME }}/.config/synapse/config.json owner={{ ansible_env.LOGNAME }} group={{ ansible_env.LOGNAME }} mode=664
+  copy: src=config.json dest=/home/{{ user }}/.config/synapse/config.json owner={{ user }} group={{ user }} mode=664
