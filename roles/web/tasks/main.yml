@@ -29,7 +29,7 @@
   apt_key: url={{ url_apt_key }}0xcbcb082a1bb943db state=present
 
 - name: MariaDB | Add source sources
-  apt_repository: repo='deb http://ftp.igh.cnrs.fr/pub/mariadb/repo/10.0/debian wheezy main' update_cache=yes
+  apt_repository: repo='deb http://ftp.igh.cnrs.fr/pub/mariadb/repo/10.1/debian wheezy main' update_cache=yes
 
 - name: MariaDB | Install Packages
   apt: pkg={{ item }} state=installed
