@@ -26,17 +26,18 @@
 # This role deploys the MariaDB processes and sets up settings.
 
 - name: MariaDB | Add keys authenticity
-  apt_key: url={{ url_apt_key }}0xcbcb082a1bb943db state=present
+  apt_key: id=0xcbcb082a1bb943db state=present
 
 - name: MariaDB | Add source sources
-  apt_repository: repo='deb http://ftp.igh.cnrs.fr/pub/mariadb/repo/10.1/debian wheezy main' update_cache=yes
+  apt_repository: repo='deb http://nwps.ws/pub/mariadb/repo/10.0/ubuntu utopic main' update_cache=yes
 
 - name: MariaDB | Install Packages
   apt: pkg={{ item }} state=installed
   with_items:
     - mariadb-server
-    - python-mysqldb
     - mariadb-client
+    - libmariadbclient18
+    - python-mysqldb
     - python-mysql.connector
   notify: Start mariadb
 
@@ -56,7 +57,7 @@
     - 127.0.0.1
     - ::1
     - localhost
-  when: database_config == 0
+#  when: database_config == 0
   notify: Restart mariadb
 
 - name: MariaDB | Write file my.cnf
