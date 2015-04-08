@@ -3,6 +3,7 @@
 #
 
 ---
+
 - hosts: local
   user: lesmyrmidons
   sudo: yes
@@ -15,7 +16,7 @@
     - vim          # Configuration for vim
     - pinta        # Gimp little
     - latex        # Latex and ide texmaker
-      #    - nvidia       # Drivers owner
+#    - nvidia       # Drivers owner
     - adst         # Application for series https://github.com/lesmyrmidons/AdstSF2
 #    - hhvm         # Fork PHP
     - web

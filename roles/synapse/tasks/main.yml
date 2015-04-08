@@ -27,5 +27,7 @@
   notify:
     - Start synapse
 
-- name: "Launcher | Set configuration"
-  copy: src=config.json dest=/home/{{ user }}/.config/synapse/config.json owner={{ user }} group={{ user }} mode=664
+- name: "Launcher | Set configuration of ansible_env.LOGNAME"
+  remote_user: lesmyrmidons
+  sudo: false
+  copy: src=config.json dest={{ ansible_env.HOME }}/.config/synapse/config.json owner={{ ansible_env.LOGNAME }} group={{ ansible_env.LOGNAME }} mode=664

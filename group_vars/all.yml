@@ -19,3 +19,4 @@ php5:
 mariadb:
   current_password: ''
   root_password: dev
+
