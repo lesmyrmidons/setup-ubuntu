@@ -60,14 +60,14 @@
 - name: Java Oracle | Automatically select the Oracle License
   shell: echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
 
-- name: Java Oracle | Install version 1.7.x
-  apt: name=oracle-java7-installer state=installed force=yes
+- name: Java Oracle | Install version 1.9.x
+  apt: name=oracle-java9-installer state=installed force=yes
 
 - name: Virtualbox | Add repository
-  apt_repository: repo='deb http://download.virtualbox.org/virtualbox/debian saucy contrib' state=present
+  apt_repository: repo='deb http://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib' state=present
 
 - name: Virtualbox | Add key
   apt_key: url='http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc' state=present
 
-- name: Virtualbox | Install Virtualbox v4.3.x
-  apt: name=virtualbox-4.3 state=installed force=yes
+- name: Virtualbox | Install Virtualbox v5.0.x
+  apt: name=virtualbox-5.0 state=installed force=yes

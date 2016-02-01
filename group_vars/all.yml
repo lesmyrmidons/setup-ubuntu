@@ -6,6 +6,7 @@ url_apt_key: "http://keyserver.ubuntu.com/pks/lookup?op=get&search="
 ntpserver: '0.fr.pool.ntp.org'
 
 user: lesmyrmidons
+local_home: "{{ lookup('env','HOME') }}"
 
 web:
   httpd_port: 80
@@ -19,4 +20,3 @@ php5:
 mariadb:
   current_password: ''
   root_password: dev
-

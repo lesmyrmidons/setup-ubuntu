@@ -4,14 +4,15 @@
 - name: VIM | Clone vim config
   sudo: false
   git: repo=git@github.com:lesmyrmidons/vim-config.git
-       dest=/home/{{ user }}/.vim-config
+       dest={{ local_home }}/.vim-config
        update=yes
        accept_hostkey=yes
+       recursive=yes
 
 - name: VIM | Created symlink (vimrc)
   sudo: false
-  file: src=/home/{{ user }}/.vim-config/vimrc dest=/home/{{ user }}/.vimrc owner={{ user }} group={{ user }} state=link
+  file: src={{ local_home }}/.vim-config/vimrc dest={{ local_home }}/.vimrc owner={{ user }} group={{ user }} state=link
 
 - name: VIM | Created symlink (.vim/)
   sudo: false
-  file: src=/home/{{ user }}/.vim-config/vim dest=/home/{{ user }}/.vim owner={{ user }} group={{ user }} state=link
+  file: src={{ local_home }}/.vim-config/vim dest={{ local_home }}/.vim owner={{ user }} group={{ user }} state=link

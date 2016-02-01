@@ -27,7 +27,10 @@
   notify:
     - Start synapse
 
-- name: "Launcher | Set configuration of ansible_env.LOGNAME"
-  remote_user: lesmyrmidons
+- name: "Launcher | Create directory if not exist"
   sudo: false
-  copy: src=config.json dest={{ ansible_env.HOME }}/.config/synapse/config.json owner={{ ansible_env.LOGNAME }} group={{ ansible_env.LOGNAME }} mode=664
+  file: path={{ local_home }}/.config/synapse state=directory mode=0700
+
+- name: "Launcher | Set configuration of {{ user }}"
+  sudo: false
+  copy: src=config.json dest={{ local_home }}/.config/synapse/config.json owner={{ user }} group={{ user }} mode=664

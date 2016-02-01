@@ -9,13 +9,13 @@
 
 - name: Conky | Test the presence of the file
   sudo: false
-  command: test -f /home/{{ user }}/.conkyrc
+  command: test -f {{ local_home }}/.conkyrc
   register: is_file_created
   ignore_errors: true
 
 - name: Conky | Download file configuration
   sudo: false
-  get_url: url=http://www.tux-planet.fr/public/conf/conky/conky-gotham dest=/home/{{ user }}/.conkyrc mode=0644 owner={{ user }} force=yes
+  get_url: url=http://www.tux-planet.fr/public/conf/conky/conky-gotham dest={{ local_home }}/.conkyrc mode=0644 owner={{ user }} force=yes
   when: ! is_file_created
   notify:
     - Start conky
