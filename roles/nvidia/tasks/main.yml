@@ -1,7 +1,0 @@
----
-
-- name: NVIDIA | Add repository for package owner
-  apt_repository: repo='ppa:ubuntu-x-swat/x-updates' state=present update_cache=yes
-
-- name: NVIDIA | Install package
-  apt: pkg=nvidia-331 state=present

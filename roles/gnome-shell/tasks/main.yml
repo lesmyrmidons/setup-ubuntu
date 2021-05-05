@@ -1,9 +1,0 @@
----
-
-- name: Gnome Shell | Install drivers for OPENVPN
-  apt: pkg=network-manager-openvpn-gnome state=installed
-
-
-# Config theme Gnome Shell
-- name: "Gnome 3 | Change default template by template dark"
-  copy: src=/usr/share/themes/Adwaita/gtk-3.0/gtk-dark.css dest=/usr/share/themes/Adwaita/gtk-3.0/gtk.css backup=yes

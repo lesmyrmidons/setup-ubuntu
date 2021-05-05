@@ -1,7 +1,0 @@
----
-
-- name: PINTA | Add repository for package
-  apt_repository: repo='ppa:pinta-maintainers/pinta-stable' state=present update_cache=yes
-
-- name: PINTA | Install package
-  apt: pkg=pinta state=present
